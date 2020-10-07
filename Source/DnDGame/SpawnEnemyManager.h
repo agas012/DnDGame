@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "MyDnDHero.h"
+#include "MyDnDEnemy.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "SpawnEnemyManager.generated.h"
@@ -23,5 +23,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	std::vector<AMyDnDEnemy*> enemies;
 
 };

@@ -16,12 +16,18 @@ void ASpawnEnemyManager::BeginPlay()
 {
 	Super::BeginPlay();
 
-	FVector Location(0.0f, 0.0f, 0.0f);
+	FVector Location(300.0f, 0.0f, 0.0f);
 	FRotator Rotation(0.0f, 0.0f, 0.0f);
 	FActorSpawnParameters SpawnInfo;
-
-	GetWorld()->SpawnActor<AMyDnDHero>(Location, Rotation, SpawnInfo);
-	
+	for (int i = 0; i < 5; i++)
+	{
+		AMyDnDEnemy* ptract = GetWorld()->SpawnActor<AMyDnDEnemy>(Location, Rotation, SpawnInfo);
+		enemies.push_back(ptract);
+		Location.X = Location.X - 150;
+		if (GEngine)
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Orange, FString::Printf(TEXT("My Location is: %s"), *enemies[i]->GetActorLocation().ToString()));
+		UE_LOG(LogTemp, Warning, TEXT("My Location is: %s"), *enemies[i]->GetActorLocation().ToString());
+	}
 }
 
 // Called every frame

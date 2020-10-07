@@ -41,7 +41,6 @@ void AMyDnDHero::BeginPlay()
 void AMyDnDHero::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	UE_LOG(LogClass, Log, TEXT("Dice Value: %d"), CharacterVals.Strength);
 }
 
 // Called to bind functionality to input
