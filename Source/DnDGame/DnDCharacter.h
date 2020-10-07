@@ -73,6 +73,7 @@ public:
 	// Sets default values for this pawn's properties
 	ADnDCharacter();
 
+	//variable to add a static mesh to the class
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* VisualMesh;
 
@@ -88,6 +89,7 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 protected:
+	//generic properties of all my characters 
 	FCharacterSheet CharacterVals;
 	FCharacterDeriv CharacterDeriv;
 };

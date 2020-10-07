@@ -9,8 +9,10 @@ ADnDCharacter::ADnDCharacter()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	//print to log
 	UE_LOG(LogClass, Log, TEXT("Hello from Pawn character class"));
 
+	//Init the VisualMesh to add a static mesh
 	VisualMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	VisualMesh->SetupAttachment(RootComponent);
 
