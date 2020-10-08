@@ -19,15 +19,33 @@ void ASpawnEnemyManager::BeginPlay()
 	FVector Location(300.0f, 0.0f, 0.0f);
 	FRotator Rotation(0.0f, 0.0f, 0.0f);
 	FActorSpawnParameters SpawnInfo;
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		AMyDnDEnemy* ptract = GetWorld()->SpawnActor<AMyDnDEnemy>(Location, Rotation, SpawnInfo);
 		enemies.push_back(ptract);
 		Location.X = Location.X - 150;
+	}
+	for (int i = 0; i < enemies.size(); i++)
+	{
 		if (GEngine)
 			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Orange, FString::Printf(TEXT("My Location is: %s"), *enemies[i]->GetActorLocation().ToString()));
 		UE_LOG(LogTemp, Warning, TEXT("My Location is: %s"), *enemies[i]->GetActorLocation().ToString());
 	}
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Orange, FString::Printf(TEXT("vector size: %d"), enemies.size()));
+	
+	int del_idx = 0;
+	enemies[del_idx]->Destroy();
+	enemies.erase(enemies.begin() + del_idx);
+
+	for (int i = 0; i < enemies.size(); i++)
+	{
+		if (GEngine)
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Orange, FString::Printf(TEXT("My Location is: %s"), *enemies[i]->GetActorLocation().ToString()));
+		UE_LOG(LogTemp, Warning, TEXT("My Location is: %s"), *enemies[i]->GetActorLocation().ToString());
+	}
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Orange, FString::Printf(TEXT("vector size: %d"), enemies.size()));
 }
 
 // Called every frame
